@@ -1,15 +1,15 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 5.8
 import PackageDescription
 
 let package = Package(
   name: "remindctl",
-  platforms: [.macOS(.v14)],
+  platforms: [.macOS(.v13)],
   products: [
     .library(name: "RemindCore", targets: ["RemindCore"]),
     .executable(name: "remindctl", targets: ["remindctl"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/steipete/Commander.git", from: "0.2.0"),
+    .package(path: "Vendor/Commander"),
   ],
   targets: [
     .target(
@@ -50,6 +50,5 @@ let package = Package(
         "RemindCore",
       ]
     ),
-  ],
-  swiftLanguageModes: [.v6]
+  ]
 )

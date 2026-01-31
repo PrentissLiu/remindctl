@@ -16,9 +16,13 @@ public enum RemindersAuthorizationStatus: String, Codable, Sendable, Equatable {
       self = .restricted
     case .denied:
       self = .denied
+#if swift(>=5.9)
     case .writeOnly:
       self = .writeOnly
-    case .fullAccess, .authorized:
+    case .fullAccess:
+      self = .fullAccess
+#endif
+    case .authorized:
       self = .fullAccess
     @unknown default:
       self = .denied

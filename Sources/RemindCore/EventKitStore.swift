@@ -193,7 +193,19 @@ public actor RemindersStore {
 
   private func requestFullAccess() async throws -> Bool {
     try await withCheckedThrowingContinuation { continuation in
-      eventStore.requestFullAccessToReminders { granted, error in
+#if swift(>=5.9)
+      if #available(macOS 14, *) {
+        eventStore.requestFullAccessToReminders { granted, error in
+          if let error {
+            continuation.resume(throwing: error)
+            return
+          }
+          continuation.resume(returning: granted)
+        }
+        return
+      }
+#endif
+      eventStore.requestAccess(to: .reminder) { granted, error in
         if let error {
           continuation.resume(throwing: error)
           return
