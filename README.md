@@ -4,6 +4,11 @@ Forget the app, not the task ✅
 
 Fast CLI for Apple Reminders on macOS.
 
+> [!IMPORTANT]
+> **macOS 13 (Ventura) Compatibility Branch**
+> This fork includes a backported branch `macos13-compat` designed for macOS 13 and Swift 5.8.
+> It uses a vendored/patched version of `Commander` to bypass Swift 6 requirements.
+
 ## Install
 
 ### Homebrew (Home Pro)
@@ -25,8 +30,8 @@ make check                     # lint + test + coverage gate
 ```
 
 ## Requirements
-- macOS 14+ (Sonoma or later)
-- Swift 6.2+
+- macOS 13+ (Ventura or later)
+- Swift 5.8+ (for this branch)
 - Reminders permission (System Settings → Privacy & Security → Reminders)
 
 ## Usage
